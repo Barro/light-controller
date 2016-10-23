@@ -50,6 +50,11 @@ static const char SWITCH_OLOHUONE_KIRKAS[] = "class:command;protocol:arctech;mod
 static const char SWITCH_MAKUUHUONE_HIMMEA[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:3;";
 static const char SWITCH_OLOHUONE_HIMMEA[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:4;";
 
+static const char SWITCH_KAJARIT_DUMMY_1[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:5;";
+static const char SWITCH_KAJARIT_DUMMY_2[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:6;";
+static const char SWITCH_KAJARIT_DUMMY_3[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:7;";
+static const char SWITCH_KAJARIT_DUMMY_4[] = "class:command;protocol:arctech;model:codeswitch;house:D;unit:8;";
+
 static const char SWITCH_KAIKKI_KIRKAS[] = "class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;";
 static const char SWITCH_KAIKKI_HIMMEA[] = "class:command;protocol:arctech;model:selflearning;house:11799578;unit:11;group:0;";
 
@@ -75,7 +80,15 @@ const RoutedDevice DEVICE_ROUTINGS[] = {
     // Kytkin MH01
     {DEVICE_MAKUUHUONE_KIRKAS, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:20256766;unit:12;group:0;"},
     {DEVICE_MAKUUHUONE_HIMMEA, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:20256766;unit:11;group:0;"},
-    {DEVICE_KAJARIT, REACT_TURNOFF, SWITCH_KAIKKI_HIMMEA}
+    // Kajarit sammuu myös oven vieressä olevasta "kaikki pois"-painikkeista:
+    {DEVICE_KAJARIT, REACT_TURNOFF, SWITCH_KAIKKI_KIRKAS},
+    {DEVICE_KAJARIT, REACT_TURNOFF, SWITCH_KAIKKI_HIMMEA},
+    // Lisäksi kajareille on oma alueensa tyhmillä Rele ja ratas Oy:n
+    // kytkimillä (group II):
+    {DEVICE_KAJARIT, REACT_BOTH, SWITCH_KAJARIT_DUMMY_1},
+    {DEVICE_KAJARIT, REACT_BOTH, SWITCH_KAJARIT_DUMMY_2},
+    {DEVICE_KAJARIT, REACT_BOTH, SWITCH_KAJARIT_DUMMY_3},
+    {DEVICE_KAJARIT, REACT_BOTH, SWITCH_KAJARIT_DUMMY_4}
 };
 
 const size_t DEVICE_COUNT = sizeof(DEVICE_ROUTINGS) / sizeof(DEVICE_ROUTINGS[0]);
