@@ -1,0 +1,11 @@
+[Unit]
+Description=Ohjaa kämpän valoja
+After=telldusd.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/light-controller
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
