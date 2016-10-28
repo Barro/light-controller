@@ -84,10 +84,10 @@ const RoutedDevice DEVICE_ROUTINGS[] = {
     {DEVICE_NONE, REACT_NONE, SWITCH_MAKUUHUONE_HIMMEA},
      // olohuone himmeä
     {DEVICE_NONE, REACT_NONE, SWITCH_OLOHUONE_HIMMEA},
-    // kaikki kirkas
-    {DEVICE_NONE, REACT_NONE, SWITCH_KAIKKI_KIRKAS},
-    // kaikki himmeä
-    {DEVICE_NONE, REACT_NONE, SWITCH_KAIKKI_HIMMEA},
+    // kaikki kirkas pois -> kaikki himmeä pois
+    {DEVICE_KAIKKI_HIMMEA, REACT_TURNOFF, SWITCH_KAIKKI_KIRKAS},
+    // kaikki himmeä pois -> kaikki kirkas pois
+    {DEVICE_KAIKKI_KIRKAS, REACT_TURNOFF, SWITCH_KAIKKI_HIMMEA},
     // Kytkin OH01
     {DEVICE_OLOHUONE_KIRKAS, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:19437866;unit:12;group:0;"},
     {DEVICE_OLOHUONE_HIMMEA, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:19437866;unit:11;group:0;"},
