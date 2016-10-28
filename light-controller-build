@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -euo pipefail
+
+CDIR=$(mktemp -d)
+function cleanup()
+{
+    rm -rf "$CDIR"
+}
+trap cleanup EXIT
+
+mkdir "$CDIR"/src "$CDIR"/build
+
+ARCHIVE=$(find /media/pi -maxdepth 2 -name light-controller.tar.gz || :)
+if [ -z "$ARCHIVE" ]; then
+    echo "Nothing to build"
+    exit 0
+fi
+
+ARCHIVE_HASH_NEW=$(sha256sum -b "$ARCHIVE" | cut -f 1 -d " ")
+if [ -f "$HOME"/.light-controller.sha256 ]; then
+    read -r ARCHIVE_HASH_OLD < "$HOME"/.light-controller.sha256
+
+    if [ "$ARCHIVE_HASH_OLD" == "$ARCHIVE_HASH_NEW" ]; then
+        echo "No need to rebuild"
+        exit 0
+    fi
+fi
+
+tar xvf "$ARCHIVE" -C "$CDIR"/src
+
+cd "$CDIR"/build
+
+/usr/local/bin/cmake "$CDIR"/src -DCMAKE_INSTALL_PREFIX=/usr
+make
+make install
+
+echo "$ARCHIVE_HASH_NEW" > "$HOME"/.light-controller.sha256
+sync
