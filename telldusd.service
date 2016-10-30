@@ -2,8 +2,8 @@
 Description=Telldus daemon
 
 [Service]
-Type=daemon
-ExecStart=/usr/sbin/telldusd
+Type=simple
+ExecStart=/usr/sbin/telldusd --nodaemon
 Restart=always
 
 [Install]
