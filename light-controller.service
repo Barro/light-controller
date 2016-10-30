@@ -1,6 +1,7 @@
 [Unit]
 Description=Ohjaa kämpän valoja
 After=telldusd.target
+Requires=telldusd.target
 
 [Service]
 Type=simple
