@@ -94,6 +94,9 @@ const RoutedDevice DEVICE_ROUTINGS[] = {
     // Kytkin OH02
     {DEVICE_OLOHUONE_KIRKAS, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:19413362;unit:12;group:0;"},
     {DEVICE_OLOHUONE_HIMMEA, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:19413362;unit:11;group:0;"},
+    // Kytkin OH03
+    {DEVICE_OLOHUONE_KIRKAS, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:21953510;unit:12;group:0;"},
+    {DEVICE_OLOHUONE_HIMMEA, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:21953510;unit:11;group:0;"},
     // Kytkin MH01
     {DEVICE_MAKUUHUONE_KIRKAS, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:20256766;unit:12;group:0;"},
     {DEVICE_MAKUUHUONE_HIMMEA, REACT_BOTH, "class:command;protocol:arctech;model:selflearning;house:20256766;unit:11;group:0;"},
@@ -126,7 +129,11 @@ const char* PATTERN_HIMMEA_KIRKAS[] = {
 
 const SwitchPattern SWITCH_PATTERNS[] = {
     {DEVICE_KAJARIT, REACT_TURNOFF, PATTERN_KIRKAS_HIMMEA},
-    {DEVICE_KAJARIT, REACT_TURNOFF, PATTERN_HIMMEA_KIRKAS}
+    {DEVICE_KAJARIT, REACT_TURNOFF, PATTERN_HIMMEA_KIRKAS},
+    {DEVICE_KAIKKI_KIRKAS, REACT_TURNOFF, PATTERN_KIRKAS_HIMMEA},
+    {DEVICE_KAIKKI_KIRKAS, REACT_TURNOFF, PATTERN_HIMMEA_KIRKAS},
+    {DEVICE_KAIKKI_HIMMEA, REACT_TURNOFF, PATTERN_KIRKAS_HIMMEA},
+    {DEVICE_KAIKKI_HIMMEA, REACT_TURNOFF, PATTERN_HIMMEA_KIRKAS}
 };
 
 const size_t PATTERN_COUNT = sizeof(SWITCH_PATTERNS) / sizeof(SWITCH_PATTERNS[0]);
